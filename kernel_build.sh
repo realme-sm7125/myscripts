@@ -59,8 +59,8 @@ clone() {
      git clone --depth=1 https://github.com/arter97/arm32-gcc.git gcc32
 	elif [ $COMPILER = "clang" ]
 	then
-	        echo  "|| Cloning Clang-14 ||"
-		git clone --depth=1  https://gitlab.com/Panchajanya1999/azure-clang.git clang
+	        echo  "|| Cloning Proton Clang ||"
+		git clone --depth=1  https://github.com/kdrag0n/proton-clang clang
 	fi
 
          echo "|| Cloning Anykernel ||"
