@@ -13,6 +13,9 @@ DEVICE="Realme 7 Pro"
 # Kernel name
 KERNELNAME="Mello-Oof-Ultra-Pro-Max-Super-Duper-Plus"
 
+# Your Name
+USER="Mayur"
+
 # The defconfig which needs to be used
 DEFCONFIG=atoll_defconfig
 
@@ -74,8 +77,8 @@ clone() {
 export ARCH=arm64
 export SUBARCH=arm64
 export LOCALVERSION="-${VERSION}"
-export KBUILD_BUILD_HOST=ultra
-export KBUILD_BUILD_USER="mayur"
+export KBUILD_BUILD_HOST=mayur
+export KBUILD_BUILD_USER="ultra"
 
 function XD() {
 if [ $COMPILER = "clang" ]
@@ -94,7 +97,7 @@ function sendinfo() {
         -d chat_id="$chat_id" \
         -d "disable_web_page_preview=true" \
         -d "parse_mode=html" \
-        -d text="<b>$KBUILD_BUILD_VERSION CI Build Triggered</b>%0A<b>Docker OS: </b><code>$DISTRO</code>%0A<b>Kernel Version : </b><code>$KERVER</code>%0A<b>Date : </b><code>$(TZ=Asia/Kolkata date)</code>%0A<b>Device : </b><code>$MODEL [$DEVICE]</code>%0A<b>Pipeline Host : </b><code>$KBUILD_BUILD_HOST</code>%0A<b>Host Core Count : </b><code>$PROCS</code>%0A<b>Compiler Used : </b><code>$KBUILD_COMPILER_STRING</code>%0A<b>Branch : </b><code>$CI_BRANCH</code>%0A<b>Top Commit : </b><a href='$DRONE_COMMIT_LINK'>$COMMIT_HEAD</a>"
+        -d text="<b>$KBUILD_BUILD_VERSION CI Build Triggered by ${USER}</b>%0A<b>Docker OS: </b><code>$DISTRO</code>%0A<b>Kernel Version : </b><code>$KERVER</code>%0A<b>Date : </b><code>$(TZ=Asia/Kolkata date)</code>%0A<b>Device : </b><code>$MODEL [$DEVICE]</code>%0A<b>Pipeline Host : </b><code>$KBUILD_BUILD_HOST</code>%0A<b>Host Core Count : </b><code>$PROCS</code>%0A<b>Compiler Used : </b><code>$KBUILD_COMPILER_STRING</code>%0A<b>Branch : </b><code>$CI_BRANCH</code>%0A<b>Top Commit : </b><a href='$DRONE_COMMIT_LINK'>$COMMIT_HEAD</a>"
 }
 # Push kernel to channel
 function push() {
