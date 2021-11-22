@@ -10,6 +10,9 @@ MODEL="RMX2170"
 
 DEVICE="Realme 7 Pro"
 
+# Kernel name
+KERNELNAME="Mello-Oof-Ultra-Pro-Max-Super-Duper-Plus"
+
 # The defconfig which needs to be used
 DEFCONFIG=atoll_defconfig
 
@@ -17,7 +20,7 @@ DEFCONFIG=atoll_defconfig
 KERNEL_DIR=$(pwd)
 
 # The version code of the Kernel
-VERSION=X1
+VERSION=v0.69
 
 # Path of final Image 
 IMAGE=$(pwd)/out/arch/arm64/boot/Image.gz-dtb
@@ -154,7 +157,7 @@ function compile() {
 # Zipping
 function zipping() {
     cd AnyKernel3 || exit 1
-    zip -r9 Serum-${VERSION}_${DEVICE}-${DATE_POSTFIX}.zip *
+    zip -r9 ${KERNELNAME}-${VERSION}_${MODEL}-${DATE_POSTFIX}.zip *
     cd ..
 }
 clone
