@@ -48,7 +48,7 @@ VERBOSE=0
 # Set Date 
 DATE=$(TZ=Asia/Kolkata date +"%Y%m%d-%T")
 START=$(date +"%s")
-DATE_POSTFIX=$(date +"%Y%m%d%H%M%S")
+DATE_POSTFIX=$(date +"%Y%m%d-%H%M%S")
 
 # Set a commit head
 COMMIT_HEAD=$(git log --oneline -1)
