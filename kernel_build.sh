@@ -11,7 +11,7 @@ MODEL="RMX2170"
 DEVICE="Realme 7 Pro"
 
 # Kernel name
-KERNELNAME="Mello-Oof-Ultra-Pro-Max-Super-Duper-Plus"
+KERNELNAME="Mello-Oof-Ultra-Pro-Max-..."
 
 # Your Name
 USER="Mayur"
@@ -49,6 +49,8 @@ VERBOSE=0
 DATE=$(TZ=Asia/Kolkata date +"%Y%m%d-%T")
 START=$(date +"%s")
 DATE_POSTFIX=$(date +"%Y%m%d-%H%M%S")
+DATEDAY=$(date +"%Y%m%d")
+DATETIME=$(date +"%H%M%S")
 
 # Set a commit head
 COMMIT_HEAD=$(git log --oneline -1)
