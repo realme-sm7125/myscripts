@@ -11,7 +11,7 @@ MODEL="RMX2170"
 DEVICE="Realme 7 Pro"
 
 # Kernel name
-KERNELNAME="Mello-Oof-Ultra-Pro-Max-..."
+KERNELNAME="Mello-Oof-Ultra-Pro-Max-...-Plus"
 
 # Your Name
 USER="Mayur"
