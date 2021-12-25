@@ -40,7 +40,7 @@ VERBOSE=0
 # For Drone CI
                 export KBUILD_BUILD_VERSION=$DRONE_BUILD_NUMBER
 		export KBUILD_BUILD_HOST=$DRONE_SYSTEM_HOST
-		export CI_BRANCH=$DRONE_BRANCH
+		export CI_BRANCH=$CIRCLE_BRANCH
 		export BASEDIR=$DRONE_REPO_NAME # overriding
 		export SERVER_URL="${DRONE_SYSTEM_PROTO}://${DRONE_SYSTEM_HOSTNAME}/ayash92/${BASEDIR}/${KBUILD_BUILD_VERSION}"
                 export PROCS=$(nproc --all)
@@ -99,7 +99,7 @@ function sendinfo() {
         -d chat_id="$chat_id" \
         -d "disable_web_page_preview=true" \
         -d "parse_mode=html" \
-        -d text="<b>$KBUILD_BUILD_VERSION CI Build Triggered by ${USER}</b>%0A<b>Docker OS: </b><code>$DISTRO</code>%0A<b>Kernel Version : </b><code>$KERVER</code>%0A<b>Date : </b><code>$(TZ=Asia/Kolkata date)</code>%0A<b>Device : </b><code>$MODEL [$DEVICE]</code>%0A<b>Pipeline Host : </b><code>$KBUILD_BUILD_HOST</code>%0A<b>Host Core Count : </b><code>$PROCS</code>%0A<b>Compiler Used : </b><code>$KBUILD_COMPILER_STRING</code>%0A<b>Branch : </b><code>$CI_BRANCH</code>%0A<b>Top Commit : </b><a href='$DRONE_COMMIT_LINK'>$COMMIT_HEAD</a>"
+        -d text="<b>$KBUILD_BUILD_VERSION CI Build Triggered by ${USER}</b>%0A<b>CI build link: </b>[Click here]($CIRCLE_BUILD_URL)%0A<b>Kernel Version : </b><code>$KERVER</code>%0A<b>Date : </b><code>$(TZ=Asia/Kolkata date)</code>%0A<b>Device : </b><code>$MODEL [$DEVICE]</code>%0A<b>Pipeline Host : </b><code>$KBUILD_BUILD_HOST</code>%0A<b>Host Core Count : </b><code>$PROCS</code>%0A<b>Compiler Used : </b><code>$KBUILD_COMPILER_STRING</code>%0A<b>Branch : </b><code>$CI_BRANCH</code>%0A<b>Top Commit : </b><a href='$DRONE_COMMIT_LINK'>$COMMIT_HEAD</a>"
 }
 # Push kernel to channel
 function push() {
