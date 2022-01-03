@@ -6,9 +6,9 @@
 #
 
 # Device Name and Codename of the device
-MODEL="RMX2170"
+MODEL="RMX2170-RMX2061"
 
-DEVICE="Realme 7 Pro"
+DEVICE="Realme 7 Pro • Realme 6 Pro"
 
 # Kernel name
 KERNELNAME="Mello-Oof-Ultra-Pro-Max-...-Plus"
