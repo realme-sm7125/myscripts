@@ -28,7 +28,7 @@ VERSION=v0.69+6
 # Path of final Image 
 IMAGE=$(pwd)/out/arch/arm64/boot/Image.gz-dtb
 
-DTBO=$(pwd)/out/arch/arm64/boot/dtbo.img
+#DTBO=$(pwd)/out/arch/arm64/boot/dtbo.img
 
 # Compiler which needs to be used (Clang or gcc)
 COMPILER=clang
@@ -157,7 +157,7 @@ function compile() {
         exit 1
     fi
     cp $IMAGE AnyKernel3
-    cp $DTBO AnyKernel3
+#    cp $DTBO AnyKernel3
 }
 # Zipping
 function zipping() {
