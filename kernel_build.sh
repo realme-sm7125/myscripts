@@ -30,6 +30,19 @@ IMAGE=$(pwd)/out/arch/arm64/boot/Image.gz-dtb
 
 #DTBO=$(pwd)/out/arch/arm64/boot/dtbo.img
 
+# Modules path (total 11)
+M1=$(pwd)/out/drivers/media/platform/msm/dvb/demux/mpq-dmx-hw-plugin.ko
+M2=$(pwd)/out/drivers/char/rdbg.ko
+M3=$(pwd)/out/drivers/media/usb/gspca/gspca_main.ko
+M4=$(pwd)/out/drivers/video/backlight/lcd.ko
+M5=$(pwd)/out/drivers/media/rc/msm-geni-ir.ko
+M6=$(pwd)/out/drivers/media/platform/msm/dvb/adapter/mpq-adapter.ko
+M7=$(pwd)/out/drivers/soc/qcom/llcc_perfmon.ko
+M8=$(pwd)/out/drivers/mmc/core/mmc_test.ko
+M9=$(pwd)/out/net/bridge/br_netfilter.ko
+M10=$(pwd)/out/drivers/net/wireless/ath/wil6210/wil6210.ko
+M11=$(pwd)/out/drivers/platform/msm/msm_11ad/msm_11ad_proxy.ko
+
 # Compiler which needs to be used (Clang or gcc)
 COMPILER=clang
 
@@ -156,8 +169,24 @@ function compile() {
         finerr
         exit 1
     fi
+    echo "Copying Kernel image" && echo ""
     cp $IMAGE AnyKernel3
+    [ -e "AnyKernel3/Image.gz-dtb" ] && echo "Image copied" || echo "Image didn't copied"
 #    cp $DTBO AnyKernel3
+    echo "Copying modules" && echo ""
+    mkdir -p AnyKernel3/modules/vendor/lib/modules
+    [ -e "$M1" ] && cp $M1 AnyKernel3/modules/vendor/lib/modules && echo "Module 1 copied" || echo "Module 1 not found"
+    [ -e "$M2" ] && cp $M2 AnyKernel3/modules/vendor/lib/modules && echo "Module 2 copied" || echo "Module 2 not found"
+    [ -e "$M3" ] && cp $M3 AnyKernel3/modules/vendor/lib/modules && echo "Module 3 copied" || echo "Module 3 not found"
+    [ -e "$M4" ] && cp $M4 AnyKernel3/modules/vendor/lib/modules && echo "Module 4 copied" || echo "Module 4 not found"
+    [ -e "$M5" ] && cp $M5 AnyKernel3/modules/vendor/lib/modules && echo "Module 5 copied" || echo "Module 5 not found"
+    [ -e "$M6" ] && cp $M6 AnyKernel3/modules/vendor/lib/modules && echo "Module 6 copied" || echo "Module 6 not found"
+    [ -e "$M7" ] && cp $M7 AnyKernel3/modules/vendor/lib/modules && echo "Module 7 copied" || echo "Module 7 not found"
+    [ -e "$M8" ] && cp $M8 AnyKernel3/modules/vendor/lib/modules && echo "Module 8 copied" || echo "Module 8 not found"
+    [ -e "$M9" ] && cp $M9 AnyKernel3/modules/vendor/lib/modules && echo "Module 9 copied" || echo "Module 9 not found"
+    [ -e "$M10" ] && cp $M10 AnyKernel3/modules/vendor/lib/modules && echo "Module 10 copied" || echo "Module 10 not found"
+    [ -e "$M11" ] && cp $M11 AnyKernel3/modules/vendor/lib/modules && echo "Module 11 copied" || echo "Module 11 not found"
+
 }
 # Zipping
 function zipping() {
