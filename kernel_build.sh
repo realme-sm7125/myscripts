@@ -58,6 +58,18 @@ VERBOSE=0
 		export SERVER_URL="${DRONE_SYSTEM_PROTO}://${DRONE_SYSTEM_HOSTNAME}/ayash92/${BASEDIR}/${KBUILD_BUILD_VERSION}"
                 export PROCS=$(nproc --all)
 
+# Set Indian timezone
+date #show me first
+currentzone=$(date +"%Z")
+oldzone=$currentzone
+echo "Current timezone is $currentzone" && echo ""
+sudo rm -rf /etc/localtime
+sudo ln -s /usr/share/zoneinfo/Asia/Calcutta /etc/localtime
+date #show me first
+currentzone=$(date +"%Z")
+echo "Current timezone is $currentzone" && echo ""
+echo "Timezone changed from $oldzone to $currentzone" && echo ""
+
 # Set Date 
 DATE=$(TZ=Asia/Kolkata date +"%Y%m%d-%T")
 START=$(date +"%s")
