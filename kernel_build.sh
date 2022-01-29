@@ -11,7 +11,7 @@ MODEL="RMX2170"
 DEVICE="Realme 7 Pro | Realme 6 Pro"
 
 # Kernel name
-KERNELNAME="Mello-Oof-Ultra-Pro-Max-...-Plus"
+KERNELNAME="Mello-Oof-Ultra-Pro-...-Plus"
 
 # Your Name
 USER="Mayur"
@@ -23,7 +23,7 @@ DEFCONFIG=atoll_defconfig
 KERNEL_DIR=$(pwd)
 
 # The version code of the Kernel
-VERSION=v0.69+6.9
+VERSION=v0.69+7
 
 # Path of final Image 
 IMAGE=$(pwd)/out/arch/arm64/boot/Image.gz-dtb
