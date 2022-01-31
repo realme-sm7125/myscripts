@@ -44,7 +44,7 @@ M10=$(pwd)/out/drivers/net/wireless/ath/wil6210/wil6210.ko
 M11=$(pwd)/out/drivers/platform/msm/msm_11ad/msm_11ad_proxy.ko
 
 # Compiler which needs to be used (Clang or gcc)
-COMPILER=gcc
+COMPILER=clang
 
 # Verbose build
 # 0 is Quiet | 1 is verbose | 2 gives reason for rebuilding targets
@@ -92,8 +92,8 @@ clone() {
                 git clone --depth=1 https://github.com/mvaisakh/gcc-arm.git gcc32
 	elif [ $COMPILER = "clang" ]
 	then
-	        echo  "|| Cloning Proton Clang ||"
-		git clone --depth=1  https://github.com/kdrag0n/proton-clang clang
+	        echo  "|| Cloning Azure Clang ||"
+		git clone --depth=1 https://gitlab.com/Panchajanya1999/azure-clang clang
 	fi
 
          echo "|| Cloning Anykernel ||"
