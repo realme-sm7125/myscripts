@@ -43,8 +43,8 @@ M9=$(pwd)/out/net/bridge/br_netfilter.ko
 M10=$(pwd)/out/drivers/net/wireless/ath/wil6210/wil6210.ko
 M11=$(pwd)/out/drivers/platform/msm/msm_11ad/msm_11ad_proxy.ko
 
-# Compiler which needs to be used (Clang or gcc)
-COMPILER=clang
+# Compiler which needs to be used (Available for now is proton, azure and gcc)
+COMPILER=azure
 
 # Verbose build
 # 0 is Quiet | 1 is verbose | 2 gives reason for rebuilding targets
@@ -90,10 +90,16 @@ clone() {
 		echo "|| Cloning GCC ||"
 		git clone --depth=1 https://github.com/mvaisakh/gcc-arm64.git gcc64
                 git clone --depth=1 https://github.com/mvaisakh/gcc-arm.git gcc32
-	elif [ $COMPILER = "clang" ]
+	elif [ $COMPILER = "azure" ]
 	then
+                COMPILER=clang
 	        echo  "|| Cloning Azure Clang ||"
 		git clone --depth=1 https://gitlab.com/Panchajanya1999/azure-clang clang
+        elif [ $COMPILER = "proton" ]
+        then
+                COMPILER=clang
+                echo  "|| Cloning Proton clang ||"
+                git clone --depth=1 https://github.com/kdrag0n/proton-clang clang
 	fi
 
          echo "|| Cloning Anykernel ||"
