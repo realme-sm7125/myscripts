@@ -44,7 +44,7 @@ M10=$(pwd)/out/drivers/net/wireless/ath/wil6210/wil6210.ko
 M11=$(pwd)/out/drivers/platform/msm/msm_11ad/msm_11ad_proxy.ko
 
 # Compiler which needs to be used (Available for now is proton, azure, atomx, neutron and gcc)
-COMPILER=neutron
+COMPILER=azure
 
 # Verbose build
 # 0 is Quiet | 1 is verbose | 2 gives reason for rebuilding targets
