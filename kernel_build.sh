@@ -11,7 +11,13 @@ MODEL="RMX2170"
 DEVICE="Realme 7 Pro | Realme 6 Pro"
 
 # Kernel name
-KERNELNAME="Mello-Oof-Ultra-Pro-...-Plus"
+mode=bat #(bat, perf)
+
+if [[ "${mode}" == "perf" ]]; then
+    KERNELNAME="Mello-Oof-Ultra-Pro-...-Plus"
+elif [[ "${mode}" == "bat" ]]; then
+    KERNELNAME="Mello-Oof-Supreme-Idle-Dildo"
+fi
 
 # Your Name
 USER="Mayur"
