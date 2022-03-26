@@ -16,7 +16,7 @@ mode=bat #(bat, perf)
 if [[ "${mode}" == "perf" ]]; then
     KERNELNAME="Mello-Oof-Ultra-Pro-...-Plus"
 elif [[ "${mode}" == "bat" ]]; then
-    KERNELNAME="Mello-Oof-Supreme-Idle-Dildo"
+    KERNELNAME="Mello-Oof-Peru-Hyper-Supreme-CI"
 fi
 
 # Your Name
