@@ -11,7 +11,7 @@ MODEL="RMX2170"
 DEVICE="Realme 7 Pro | Realme 6 Pro"
 
 # Kernel name
-mode=bat #(bat, perf)
+mode=perf #(bat, perf)
 
 if [[ "${mode}" == "perf" ]]; then
     KERNELNAME="Mello-Oof-Ultra-Pro-...-Plus"
@@ -50,7 +50,7 @@ M10=$(pwd)/out/drivers/net/wireless/ath/wil6210/wil6210.ko
 M11=$(pwd)/out/drivers/platform/msm/msm_11ad/msm_11ad_proxy.ko
 
 # Compiler which needs to be used (Available for now is proton, azure, atomx, neutron and gcc)
-COMPILER=azure
+COMPILER=proton
 
 # Verbose build
 # 0 is Quiet | 1 is verbose | 2 gives reason for rebuilding targets
