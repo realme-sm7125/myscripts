@@ -23,7 +23,7 @@ DEFCONFIG=atoll_defconfig
 KERNEL_DIR=$(pwd)
 
 # The version code of the Kernel
-VERSION=v0.69+2
+VERSION=v0.69+3
 
 # Path of final Image 
 IMAGE=$(pwd)/out/arch/arm64/boot/Image.gz-dtb
@@ -76,6 +76,8 @@ START=$(date +"%s")
 DATE_POSTFIX=$(date +"%Y%m%d-%H%M%S")
 DATEDAY=$(date +"%Y%m%d")
 DATETIME=$(date +"%H%M%S")
+
+echo "Kernel name would be ${KERNELNAME}-${VERSION}_${MODEL}-${DATE_POSTFIX}"
 
 # Set a commit head
 COMMIT_HEAD=$(git log --oneline -1)
