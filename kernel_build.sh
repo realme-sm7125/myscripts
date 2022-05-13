@@ -119,7 +119,9 @@ clone() {
 	fi
 
          echo "|| Cloning Anykernel ||"
-	git clone https://github.com/marshmello61/AnyKernel3
+	 git clone https://github.com/marshmello61/AnyKernel3
+         echo "Patching Anykernel for Kernel"
+         rm -rf AnyKernel3/anykernel2.sh
 }
 
 # Export
