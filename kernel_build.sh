@@ -5,6 +5,11 @@
 # Script For Building Android arm64 Kernel
 #
 
+# Stop script if version already defined. Because that is for roms, not for zip
+# if [ -e version ]; then
+#    exit
+# fi
+
 # Device Name and Codename of the device
 MODEL="RMX2170"
 
@@ -23,7 +28,11 @@ DEFCONFIG=atoll_defconfig
 KERNEL_DIR=$(pwd)
 
 # The version code of the Kernel
-VERSION=v0.69+13
+if [ -e version ]; then
+    VERSION=$(cat version)
+else
+    VERSION=v0.69+13
+fi
 
 # Path of final Image 
 IMAGE=$(pwd)/out/arch/arm64/boot/Image.gz-dtb
@@ -44,7 +53,7 @@ M10=$(pwd)/out/drivers/net/wireless/ath/wil6210/wil6210.ko
 M11=$(pwd)/out/drivers/platform/msm/msm_11ad/msm_11ad_proxy.ko
 
 # Compiler which needs to be used (Available for now is proton, azure, atomx, neutron and gcc)
-COMPILER=neutron
+COMPILER=atomx
 
 # Verbose build
 # 0 is Quiet | 1 is verbose | 2 gives reason for rebuilding targets

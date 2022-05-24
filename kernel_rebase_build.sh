@@ -23,7 +23,11 @@ DEFCONFIG=atoll_defconfig
 KERNEL_DIR=$(pwd)
 
 # The version code of the Kernel
-VERSION=v0.69+5
+if [ -e version ]; then
+    VERSION=$(cat version)
+else
+    VERSION=v0.69+5
+fi
 
 # Path of final Image 
 IMAGE=$(pwd)/out/arch/arm64/boot/Image.gz-dtb
@@ -44,7 +48,7 @@ M10=$(pwd)/out/drivers/net/wireless/ath/wil6210/wil6210.ko
 M11=$(pwd)/out/drivers/platform/msm/msm_11ad/msm_11ad_proxy.ko
 
 # Compiler which needs to be used (Available for now is proton, azure, atomx, neutron, trb and gcc)
-COMPILER=neutron
+COMPILER=atomx
 
 # Verbose build
 # 0 is Quiet | 1 is verbose | 2 gives reason for rebuilding targets
