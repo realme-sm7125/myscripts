@@ -184,6 +184,7 @@ function compile() {
                                 LD=ld.lld \
 				AR=llvm-ar \
 				NM=llvm-nm \
+                                LLVM=1 \
 				OBJCOPY=llvm-objcopy \
 				OBJDUMP=llvm-objdump \
 				STRIP=llvm-strip \
