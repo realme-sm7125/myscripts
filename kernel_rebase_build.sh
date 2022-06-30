@@ -90,8 +90,8 @@ clone() {
 	if [ $COMPILER = "gcc" ]
 	then
 		echo "|| Cloning GCC ||"
-		git clone --depth=1 https://github.com/reaPeR1010/arm64-gcc.git gcc64
-                git clone --depth=1 https://github.com/reaPeR1010/arm32-gcc.git gcc32
+		git clone --depth=1 https://github.com/reaPeR1010/arm64-gcc.git -b gcc-12 gcc64
+                git clone --depth=1 https://github.com/reaPeR1010/arm32-gcc.git -b gcc-12 gcc32
 	elif [ $COMPILER = "azure" ]
 	then
                 COMPILER=clang
