@@ -141,9 +141,10 @@ if [ $COMPILER = "clang" ]
 	elif [ $COMPILER = "gcc" ]
 	then
 		export KBUILD_COMPILER_STRING=$(${KERNEL_DIR}/gcc64/bin/aarch64-elf-gcc --version | head -n 1)
-		PATH=${KERNEL_DIR}/gcc64/bin/:$KERNEL_DIR/gcc32/bin/:/usr/bin:$PATH
+		export PATH=${KERNEL_DIR}/gcc64/bin/:$KERNEL_DIR/gcc32/bin/:/usr/bin:$PATH
 	fi
 }
+
 # Send info plox channel
 function sendinfo() {
     curl -s -X POST "https://api.telegram.org/bot$token/sendMessage" \
