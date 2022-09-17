@@ -35,7 +35,7 @@ cp -r "${repodir}"/src/* "${path}"/net/wireguard/
 cd "${path}" || exit 1
 git add net/wireguard/*
 git commit -s -m "wireguard: Update to ${ver}
-  from ${repo}/src"
+  from ${repo}/tree/master/src"
 
 # finalize
 cd "${DIR}" || exit 1
