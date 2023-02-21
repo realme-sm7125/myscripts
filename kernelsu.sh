@@ -10,7 +10,7 @@ rm -rf ${repodir}
 # questionaries
 echo -ne "\033[1;36m Provide path to kernel source: \033[0m"
 read -r path
-if [ -d "${path}/net/wireguard" ]; then
+if [ -d "${path}/drivers/kernelsu" ]; then
 	rm -rf ${path}/drivers/kernelsu
 	cd ${path} || exit 1
 #	git add net/wireguard
