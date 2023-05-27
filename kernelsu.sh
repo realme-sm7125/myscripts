@@ -44,12 +44,15 @@ git commit -s -m "kernelsu: sync with repo
 echo ""
 
 # add kernelsu nongki amd non kprobe related commit
-echo -ne "Do you want to reeapply commit in kernelsu [y/n]: "
+echo -ne "Do you want to reeapply patch in kernelsu [y/n]: "
 read -r kksu
 if [[ "${kksu}" == "y" ]]; then
-    echo "Picking" && echo ""
-    git fetch https://github.com/jandaX/android_kernel_xiaomi_joyeuse Tanya
-    git cherry-pick -s 34fc1ce
+    echo "Applying" && echo ""
+    wget https://raw.githubusercontent.com/realme-sm7125/myscripts/main/patches/ksu-reapply-kprobes.patch
+    git apply ksu-reapply-kprobes.patch
+    rm -rf ksu-reapply-kprobes.patch
+    git add .
+    git commit -s
     echo "Done"
 elif [[ "${kksu}" == "n" ]]; then
     echo "Skipping" && echo ""
