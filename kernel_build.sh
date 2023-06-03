@@ -218,6 +218,8 @@ function compile() {
     [ -e "$M10" ] && cp $M10 AnyKernel3/modules/vendor/lib/modules && echo "Module 10 copied" || echo "Module 10 not found"
     [ -e "$M11" ] && cp $M11 AnyKernel3/modules/vendor/lib/modules && echo "Module 11 copied" || echo "Module 11 not found"
 
+    [ -e AnyKernel3/modules/system ] && echo "Removing obsolete directory from Anykernel3" && rm -rf AnyKernel3/modules/system || echo "AnyKernel3 obsolete file doesn't exist"
+
 }
 # Zipping
 function zipping() {

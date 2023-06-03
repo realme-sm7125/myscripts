@@ -11,7 +11,7 @@ MODEL="RMX2170"
 DEVICE="Realme 7 Pro | Realme 6 Pro"
 
 # Kernel name
-KERNELNAME="Mello-Oof-Mega-Omega-Gawd-Overlord"
+KERNELNAME="Mello-Oof-Mega-...-Overlord"
 
 # Your Name
 USER="Mayur"
@@ -23,9 +23,9 @@ DEFCONFIG=atoll_defconfig
 KERNEL_DIR=$(pwd)
 
 # The version code of the Kernel
-VERSION=v0.69+13
+VERSION=v0.69+14
 
-# Path of final Image 
+# Path of final Image
 IMAGE=$(pwd)/out/arch/arm64/boot/Image.gz-dtb
 
 #DTBO=$(pwd)/out/arch/arm64/boot/dtbo.img
@@ -70,7 +70,7 @@ currentzone=$(date +"%Z")
 echo "Current timezone is $currentzone" && echo ""
 echo "Timezone changed from $oldzone to $currentzone" && echo ""
 
-# Set Date 
+# Set Date
 DATE=$(TZ=Asia/Kolkata date +"%Y%m%d-%T")
 START=$(date +"%s")
 DATE_POSTFIX=$(date +"%Y%m%d-%H%M%S")
@@ -226,6 +226,9 @@ function compile() {
     [ -e "$M9" ] && cp $M9 AnyKernel3/modules/vendor/lib/modules && echo "Module 9 copied" || echo "Module 9 not found"
     [ -e "$M10" ] && cp $M10 AnyKernel3/modules/vendor/lib/modules && echo "Module 10 copied" || echo "Module 10 not found"
     [ -e "$M11" ] && cp $M11 AnyKernel3/modules/vendor/lib/modules && echo "Module 11 copied" || echo "Module 11 not found"
+
+    [ -e AnyKernel3/modules/system ] && echo "Removing obsolete directory from Anykernel3" && rm -rf AnyKernel3/modules/system || echo "AnyKernel3 obsolete file doesn't exist"
+
 
 }
 # Zipping
