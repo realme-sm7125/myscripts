@@ -1,15 +1,12 @@
-From d3fef24b0890a851982cce4c03bf1edee19de826 Mon Sep 17 00:00:00 2001
-From: onettboots <blackcocopet@gmail.com>
-Date: Wed, 26 Apr 2023 11:31:29 +0000
-Subject: [PATCH 1/2] [REAPPLY] kernelsu: we're non GKI and non KPROBES build
+commit 89f64aed8ebf0d7aaef0323f3fba2b16a29cbbad
+Author: onettboots <blackcocopet@gmail.com>
+Date:   Wed Apr 26 11:31:29 2023 +0000
 
-Change-Id: Ib2fd3e1c5beb3f0e98772c2458e3a6c9485920dc
-Signed-off-by: Angga <angga@linuxmail.org>
-Signed-off-by: Mayur <ultramayur123@gmail.com>
----
- drivers/kernelsu/ksu.c | 8 ++++----
- drivers/kernelsu/ksu.h | 8 ++++----
- 2 files changed, 8 insertions(+), 8 deletions(-)
+    [REAPPLY] kernelsu: we're non GKI and non KPROBES build
+    
+    Change-Id: Ib2fd3e1c5beb3f0e98772c2458e3a6c9485920dc
+    Signed-off-by: Angga <angga@linuxmail.org>
+    Signed-off-by: Mayur <ultramayur123@gmail.com>
 
 diff --git a/drivers/kernelsu/ksu.c b/drivers/kernelsu/ksu.c
 index c2da89022624..1dc3901ba932 100644
@@ -33,24 +30,27 @@ index c2da89022624..1dc3901ba932 100644
  	return 0;
  }
 diff --git a/drivers/kernelsu/ksu.h b/drivers/kernelsu/ksu.h
-index 3ace692db3ad..254bee70b908 100644
+index dae32738a899..f2cd14effba2 100644
 --- a/drivers/kernelsu/ksu.h
 +++ b/drivers/kernelsu/ksu.h
-@@ -4,10 +4,10 @@
+@@ -5,13 +5,13 @@
  #include "linux/workqueue.h"
  
  #ifndef KSU_GIT_VERSION
--#warning "KSU_GIT_VERSION not defined! It is better to make KernelSU a git submodule!"
+-#warning                                                                       \
+-	"KSU_GIT_VERSION not defined! It is better to make KernelSU a git submodule!"
 -#define KERNEL_SU_VERSION (16)
 -#else
--#define KERNEL_SU_VERSION (10000 + KSU_GIT_VERSION + 200) // major * 10000 + git version + 200 for historical reasons
-+//#warning "KSU_GIT_VERSION not defined! It is better to make KernelSU a git submodule!"
+-#define KERNEL_SU_VERSION                                                      \
+-	(10000 + KSU_GIT_VERSION +                                             \
+-	 200) // major * 10000 + git version + 200 for historical reasons
++//#warning                                                                       \
++//	"KSU_GIT_VERSION not defined! It is better to make KernelSU a git submodule!"
 +#define KERNEL_SU_VERSION (10818)
 +//#else
-+//#define KERNEL_SU_VERSION (10000 + KSU_GIT_VERSION + 200) // major * 10000 + git version + 200 for historical reasons
++//#define KERNEL_SU_VERSION                                                      \
++//	(10000 + KSU_GIT_VERSION +                                             \
++//	 200) // major * 10000 + git version + 200 for historical reasons
  #endif
  
  #define KERNEL_SU_OPTION 0xDEADBEEF
--- 
-2.34.1
-
