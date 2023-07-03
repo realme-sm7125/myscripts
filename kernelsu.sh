@@ -53,8 +53,8 @@ if [[ "${kksu}" == "y" ]]; then
     rm -rf ksu-reapply-kprobes.patch
     git add .
     git commit -s --author="onettboots <blackcocopet@gmail.com>" -m "[REAPPLY] kernelsu: we're non GKI and non KPROBES build
-        This is an automated commit using script from
-        https://github.com/realme-sm7125/myscripts/blob/main/kernelsu.sh"
+    This is an automated commit using script from
+    https://github.com/realme-sm7125/myscripts/blob/main/kernelsu.sh"
     echo "Done"
 elif [[ "${kksu}" == "n" ]]; then
     echo "Skipping" && echo ""
