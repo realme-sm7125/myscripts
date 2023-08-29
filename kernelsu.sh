@@ -21,9 +21,11 @@ fi
 # clone
 git clone ${repo} ${repodir}
 cd ${repodir}
-git rev-list --count HEAD | tee ksuversion.txt
+git describe --tags $(git rev-list --tags --max-count=1) | tee kssu.txt
+git rev-list --count $(git describe --tags $(git rev-list --tags --max-count=1)) | tee ksuversion.txt
 cd $DIR
 ksuversion=$(expr 10000 + $(cat ${repodir}/ksuversion.txt) + 200)
+ksutag=$(cat ${repodir}/kssu.txt)
 #wget https://git.zx2c4.com/wireguard-linux-compat/snapshot/wireguard-linux-compat-"${ver}".zip
 #unzip wireguard-linux-compat-"${ver}".zip -d wireguard
 
@@ -36,7 +38,7 @@ cp -r "${repodir}"/kernel/* "${path}"/drivers/kernelsu
 # git add and commit
 cd "${path}" || exit 1
 git add drivers/kernelsu/*
-git commit -s -m "kernelsu: sync with repo
+git commit -s -m "kernelsu: sync with repo with ${ksutag}
   from ${repo}/tree/main/kernel
   using script from https://github.com/realme-sm7125/myscripts/blob/main/kernelsu.sh
  Referenced from https://kernelsu.org/guide/how-to-integrate-for-non-gki.html#integrate-with-kprobe
