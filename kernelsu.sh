@@ -38,7 +38,7 @@ cp -r "${repodir}"/kernel/* "${path}"/drivers/kernelsu
 # git add and commit
 cd "${path}" || exit 1
 git add drivers/kernelsu/*
-git commit -s -m "kernelsu: sync with repo with ${ksutag}
+git commit -s -m "kernelsu: sync ${ksutag} tag with repo
   from ${repo}/tree/main/kernel
   using script from https://github.com/realme-sm7125/myscripts/blob/main/kernelsu.sh
  Referenced from https://kernelsu.org/guide/how-to-integrate-for-non-gki.html#integrate-with-kprobe
