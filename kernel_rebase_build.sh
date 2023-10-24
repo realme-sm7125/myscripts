@@ -23,7 +23,7 @@ DEFCONFIG=atoll_defconfig
 KERNEL_DIR=$(pwd)
 
 # The version code of the Kernel
-VERSION=v1.69+0
+VERSION=v1.69+1
 
 # Path of final Image
 IMAGE=$(pwd)/out/arch/arm64/boot/Image.gz-dtb
@@ -233,6 +233,7 @@ function compile() {
 }
 # Zipping
 function zipping() {
+    echo "Zipping"
     cd AnyKernel3 || exit 1
     zip -r9 ${KERNELNAME}-${VERSION}_${MODEL}-${DATE_POSTFIX}.zip *
     cd ..
