@@ -24,7 +24,8 @@ cd ${repodir}
 git describe --tags $(git rev-list --tags --max-count=1) | tee kssu.txt
 git rev-list --count $(git describe --tags $(git rev-list --tags --max-count=1)) | tee ksuversion.txt
 cd $DIR
-ksuversion=$(expr 10000 + $(cat ${repodir}/ksuversion.txt) + 200)
+ksugitversion=$(cat ${repodir}/ksuversion.txt)
+ksuversion=$(expr 10000 + $ksugitversion + 200)
 ksutag=$(cat ${repodir}/kssu.txt)
 #wget https://git.zx2c4.com/wireguard-linux-compat/snapshot/wireguard-linux-compat-"${ver}".zip
 #unzip wireguard-linux-compat-"${ver}".zip -d wireguard
@@ -67,9 +68,11 @@ echo ""
 echo "Updating KSU version"
 echo ""
 sed -i "s/^#define KERNEL_SU_VERSION.*/#define KERNEL_SU_VERSION ($ksuversion)/g" drivers/kernelsu/ksu.h
+sed -i "s/^KSU_GIT_VERSION.*/KSU_GIT_VERSION := ($ksugitversion)/g" drivers/kernelsu/Makefile
 echo "Updated"
 git add drivers/kernelsu/*
-git commit -s -m "kernelsu: hardcode update kernelsu version
+git commit -s -m "kernelsu: hardcode update kernelsu version to $ksuversion
+  update ksu version and also suppress compilation warning
   using script from https://github.com/realme-sm7125/myscripts/blob/main/kernelsu.sh"
 echo ""
 
