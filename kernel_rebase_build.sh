@@ -43,8 +43,9 @@ M9=$(pwd)/out/net/bridge/br_netfilter.ko
 M10=$(pwd)/out/drivers/net/wireless/ath/wil6210/wil6210.ko
 M11=$(pwd)/out/drivers/platform/msm/msm_11ad/msm_11ad_proxy.ko
 
-# Compiler which needs to be used (Available for now is proton, azure, atomx, neutron, trb and gcc)
-COMPILER=proton
+# Compiler which needs to be used (Available for now is proton, azure,
+# gclang (google clang), atomx, neutron, trb and gcc)
+COMPILER=azure
 
 # Verbose build
 # 0 is Quiet | 1 is verbose | 2 gives reason for rebuilding targets
@@ -112,6 +113,11 @@ clone() {
                 COMPILER=clang
                 echo "|| Cloning Neutron Clang ||"
                 git clone --depth=1 https://gitlab.com/dakkshesh07/neutron-clang clang
+        elif [ $COMPILER = "gclang" ]
+        then
+                COMPILER=clang
+                echo "|| Cloning google clang from Arrow OS ||"
+                git clone --depth=1 https://github.com/ArrowOS-Devices/android_prebuilts_clang_host_linux-x86_clang-r437112 clang
         elif [ $COMPILER = "trb" ]
         then
                 COMPILER=clang
