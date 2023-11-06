@@ -23,7 +23,7 @@ DEFCONFIG=atoll_defconfig
 KERNEL_DIR=$(pwd)
 
 # The version code of the Kernel
-VERSION=v1.69+1.6
+VERSION=v1.69+1.9
 
 # Path of final Image
 IMAGE=$(pwd)/out/arch/arm64/boot/Image.gz-dtb
