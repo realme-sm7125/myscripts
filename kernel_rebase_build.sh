@@ -30,6 +30,7 @@ IMAGE=$(pwd)/out/arch/arm64/boot/Image.gz-dtb
 #DTBO=$(pwd)/out/arch/arm64/boot/dtbo.img
 
 # Modules path (total 11)
+MODPATH=AnyKernel3/modules/vendor/lib/modules
 M1=$(pwd)/out/drivers/media/platform/msm/dvb/demux/mpq-dmx-hw-plugin.ko
 M2=$(pwd)/out/drivers/char/rdbg.ko
 M3=$(pwd)/out/drivers/media/usb/gspca/gspca_main.ko
@@ -41,6 +42,10 @@ M8=$(pwd)/out/drivers/mmc/core/mmc_test.ko
 M9=$(pwd)/out/net/bridge/br_netfilter.ko
 M10=$(pwd)/out/drivers/net/wireless/ath/wil6210/wil6210.ko
 M11=$(pwd)/out/drivers/platform/msm/msm_11ad/msm_11ad_proxy.ko
+
+# Obsolete directories
+OBMODULE=AnyKernel3/modules/system
+OBPATCH=AnyKernel3/patch
 
 # Compiler which needs to be used (Available for now is proton, azure,
 # gclang (google clang), atomx, neutron, trb and gcc)
@@ -219,20 +224,21 @@ function compile() {
     [ -e "AnyKernel3/Image.gz-dtb" ] && echo "Image copied" || echo "Image didn't copied"
 #    cp $DTBO AnyKernel3
     echo "Copying modules" && echo ""
-    mkdir -p AnyKernel3/modules/vendor/lib/modules
-    [ -e "$M1" ] && cp $M1 AnyKernel3/modules/vendor/lib/modules && echo "Module 1 copied" || echo "Module 1 not found"
-    [ -e "$M2" ] && cp $M2 AnyKernel3/modules/vendor/lib/modules && echo "Module 2 copied" || echo "Module 2 not found"
-    [ -e "$M3" ] && cp $M3 AnyKernel3/modules/vendor/lib/modules && echo "Module 3 copied" || echo "Module 3 not found"
-    [ -e "$M4" ] && cp $M4 AnyKernel3/modules/vendor/lib/modules && echo "Module 4 copied" || echo "Module 4 not found"
-    [ -e "$M5" ] && cp $M5 AnyKernel3/modules/vendor/lib/modules && echo "Module 5 copied" || echo "Module 5 not found"
-    [ -e "$M6" ] && cp $M6 AnyKernel3/modules/vendor/lib/modules && echo "Module 6 copied" || echo "Module 6 not found"
-    [ -e "$M7" ] && cp $M7 AnyKernel3/modules/vendor/lib/modules && echo "Module 7 copied" || echo "Module 7 not found"
-    [ -e "$M8" ] && cp $M8 AnyKernel3/modules/vendor/lib/modules && echo "Module 8 copied" || echo "Module 8 not found"
-    [ -e "$M9" ] && cp $M9 AnyKernel3/modules/vendor/lib/modules && echo "Module 9 copied" || echo "Module 9 not found"
-    [ -e "$M10" ] && cp $M10 AnyKernel3/modules/vendor/lib/modules && echo "Module 10 copied" || echo "Module 10 not found"
-    [ -e "$M11" ] && cp $M11 AnyKernel3/modules/vendor/lib/modules && echo "Module 11 copied" || echo "Module 11 not found"
+    mkdir -p $MODPATH
+    [ -e "$M1" ] && cp $M1 $MODPATH && echo "Module 1 copied" || echo "Module 1 not found"
+    [ -e "$M2" ] && cp $M2 $MODPATH && echo "Module 2 copied" || echo "Module 2 not found"
+    [ -e "$M3" ] && cp $M3 $MODPATH && echo "Module 3 copied" || echo "Module 3 not found"
+    [ -e "$M4" ] && cp $M4 $MODPATH && echo "Module 4 copied" || echo "Module 4 not found"
+    [ -e "$M5" ] && cp $M5 $MODPATH && echo "Module 5 copied" || echo "Module 5 not found"
+    [ -e "$M6" ] && cp $M6 $MODPATH && echo "Module 6 copied" || echo "Module 6 not found"
+    [ -e "$M7" ] && cp $M7 $MODPATH && echo "Module 7 copied" || echo "Module 7 not found"
+    [ -e "$M8" ] && cp $M8 $MODPATH && echo "Module 8 copied" || echo "Module 8 not found"
+    [ -e "$M9" ] && cp $M9 $MODPATH && echo "Module 9 copied" || echo "Module 9 not found"
+    [ -e "$M10" ] && cp $M10 $MODPATH && echo "Module 10 copied" || echo "Module 10 not found"
+    [ -e "$M11" ] && cp $M11 $MODPATH && echo "Module 11 copied" || echo "Module 11 not found"
 
-    [ -e AnyKernel3/modules/system ] && echo "Removing obsolete directory from Anykernel3" && rm -rf AnyKernel3/modules/system || echo "AnyKernel3 obsolete file doesn't exist"
+    [ -e "$OBMODULE" ] && echo "Removing obsolete module directory from Anykernel3" && rm -rf $OBMODULE || echo "AnyKernel3 obsolete module directory doesn't exist"
+    [ -e "$OBPATCH" ] && echo "Removing obsolete patch directory from Anykernel3" && rm -rf $OBPATCH || echo "AnyKernel3 obsolete patch directory doesn't exist"
 
 
 }
