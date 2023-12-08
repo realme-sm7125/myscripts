@@ -68,6 +68,7 @@ echo ""
 echo "Updating KSU version"
 echo ""
 sed -i "s/^#define KERNEL_SU_VERSION.*/#define KERNEL_SU_VERSION ($ksuversion)/g" drivers/kernelsu/ksu.h
+sed -i 's:ifeq ($(shell test -e $(srctree)/$(src)/../.git; echo $$?),0):ifeq ($(shell test -e drivers/kernelsu; echo $$?),0):g' drivers/kernelsu/Makefile
 sed -i "s/^KSU_GIT_VERSION.*/KSU_GIT_VERSION := ($ksugitversion)/g" drivers/kernelsu/Makefile
 echo "Updated"
 git add drivers/kernelsu/*
