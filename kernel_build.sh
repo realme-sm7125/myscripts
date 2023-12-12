@@ -181,6 +181,7 @@ function compile() {
 				STRIP=llvm-strip \
                                 V=$VERBOSE \
 				CROSS_COMPILE=aarch64-linux-gnu- \
+                                kpti=off \
           CROSS_COMPILE_ARM32=arm-linux-gnueabi- 2>&1 | tee error.log
 
 	elif [ $COMPILER = "gcc" ]
