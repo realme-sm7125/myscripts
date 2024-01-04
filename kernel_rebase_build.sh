@@ -10,7 +10,7 @@ MODEL="RMX2170"
 DEVICE="Realme 7 Pro | Realme 6 Pro"
 
 # Kernel name
-KERNELNAME="Mello-Oof-Me-...-Overlord"
+KERNELNAME="Mello-Oof-Mega-...-Overlord"
 
 # Your Name
 USER="Mayur"
@@ -82,7 +82,8 @@ DATE_POSTFIX=$(date +"%Y%m%d-%H%M%S")
 DATEDAY=$(date +"%Y%m%d")
 DATETIME=$(date +"%H%M%S")
 
-echo "Kernel name would be ${KERNELNAME}-${VERSION}_${MODEL}-${DATE_POSTFIX}"
+FINAL_KERNELNAME=${KERNELNAME}-${VERSION}_${MODEL}-${DATE_POSTFIX}
+echo "Kernel name would be ${FINAL_KERNELNAME}"
 
 # Set a commit head
 COMMIT_HEAD=$(git log --oneline -1)
@@ -248,6 +249,8 @@ function zipping() {
     echo "Zipping"
     cd AnyKernel3 || exit 1
     zip -r9 ${KERNELNAME}-${VERSION}_${MODEL}-${DATE_POSTFIX}.zip *
+    echo "Zip created. Now will rename"
+    [ -e ${KERNELNAME}*zip ] && mv ${KERNELNAME}*zip ${FINAL_KERNELNAME}.zip && echo "Kernel renamed to ${FINAL_KERNELNAME}.zip" || echo "Kernel starting with ${KERNELNAME} does not exist"
     cd ..
 }
 clone
