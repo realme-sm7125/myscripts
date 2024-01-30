@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 # declare constants
 DIR=$(pwd)
-repo="https://github.com/wxt1221/KernelSU"
+repo="https://github.com/tiann/KernelSU"
 repodir="KernelSU"
 
 # initialize
