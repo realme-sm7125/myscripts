@@ -22,7 +22,7 @@ DEFCONFIG=atoll_defconfig
 KERNEL_DIR=$(pwd)
 
 # The version code of the Kernel
-VERSION=v1.69+4.6
+VERSION=v1.69+5
 
 # Path of final Image
 IMAGE=$(pwd)/out/arch/arm64/boot/Image.gz-dtb
@@ -202,6 +202,9 @@ function compile() {
                                 V=$VERBOSE \
 				CROSS_COMPILE=aarch64-linux-gnu- \
                                 kpti=off \
+                                allow_file_spec_access \
+                                irqaffinity=0-3 \
+                                pelt=8 \
           CROSS_COMPILE_ARM32=arm-linux-gnueabi- 2>&1 | tee error.log
 
 	elif [ $COMPILER = "gcc" ]
